@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>আমল ট্র্যাকার (Amol Tracker) – ফ্রি অ্যান্ড্রয়েড অ্যাপ ডাউনলোড</title>
+<meta name="description" content="আমল ট্র্যাকার: পাঁচ ওয়াক্ত নামাজ, জিকির ও দৈনন্দিন আমলের চেকলিস্ট, জামাতের অ্যালার্ম, হিজরি তারিখ এবং সূর্যোদয়-সূর্যাস্তের সময়। বিনামূল্যে ডাউনলোড করুন।">
+<meta property="og:title" content="আমল ট্র্যাকার – Amol Tracker">
+<meta property="og:description" content="পাঁচ ওয়াক্ত নামাজ-ভিত্তিক আমল ট্র্যাক করার ফ্রি অ্যান্ড্রয়েড অ্যাপ।">
+<meta property="og:image" content="screenshots/home.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Noto+Serif+Bengali:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF6ED; --paper:#FFFFFF; --green:#1F4B43; --gold:#AD7A26;
+  --ink:#23302D; --muted:#5E6B67; --line:#E4DCC9; --warn:#FBEAEA; --warn-ink:#A3262A;
+}
+@media (prefers-color-scheme: dark){
+  :root{--cream:#141A18; --paper:#1C2421; --green:#8FC5B8; --gold:#D9A94E; --ink:#EDE9DD; --muted:#A5B0AC; --line:#2E3A36; --warn:#3A1E20; --warn-ink:#F0A6A8;}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:17px}
+h1,h2{font-family:'Noto Serif Bengali','Hind Siliguri',serif;color:var(--green);line-height:1.35}
+a{color:var(--green)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* hero */
+.hero{padding:48px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.date-mark{display:flex;align-items:baseline;gap:10px;color:var(--muted);font-size:15px;margin-bottom:14px}
+.date-mark s{font-size:22px;opacity:.6}
+.date-mark b{font-family:'Noto Serif Bengali',serif;font-size:34px;color:var(--gold);font-weight:800}
+h1{font-size:clamp(36px,6vw,58px);font-weight:800;letter-spacing:-.5px}
+.lead{margin:16px 0 26px;font-size:19px;color:var(--muted);max-width:30em}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--cream);text-decoration:none;font-weight:600;font-size:19px;padding:15px 28px;border-radius:14px;box-shadow:0 6px 0 rgba(0,0,0,.15);transition:transform .1s}
+@media (prefers-color-scheme: dark){.btn{color:#0f1513}}
+.btn:hover{transform:translateY(2px)}
+.meta{margin-top:14px;font-size:14.5px;color:var(--muted)}
+.hero figure{justify-self:center;width:min(300px,78vw);border-radius:30px;border:6px solid var(--green);overflow:hidden;box-shadow:0 20px 50px rgba(31,75,67,.25);background:var(--paper)}
+.hero img{display:block;width:100%;height:auto}
+
+section{padding:44px 0}
+h2{font-size:clamp(26px,4vw,34px);margin-bottom:22px}
+
+/* features */
+.feat{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+.feat li{padding:16px 0;border-top:1px solid var(--line)}
+.feat b{display:block;color:var(--green);font-size:18.5px;font-weight:600}
+.feat span{color:var(--muted);font-size:16px}
+
+/* gallery */
+.shots{display:flex;gap:18px;overflow-x:auto;padding:6px 20px 22px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.shots figure{flex:0 0 auto;width:230px;scroll-snap-align:center}
+.shots img{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line);background:var(--paper)}
+.shots figcaption{margin-top:8px;font-size:14.5px;color:var(--muted);text-align:center}
+.gal{max-width:1040px;margin:0 auto}
+
+/* install */
+.steps{counter-reset:s;list-style:none;max-width:44em}
+.steps li{counter-increment:s;position:relative;padding:0 0 18px 54px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:600}
+.note{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:44em;color:var(--muted);font-size:16px}
+.note strong{color:var(--ink)}
+.warn{background:var(--warn);color:var(--warn-ink);border-radius:14px;padding:14px 18px;max-width:44em;margin-top:16px;font-size:15.5px}
+
+footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+footer a{margin-right:16px}
+
+@media(max-width:760px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero figure{order:-1}
+  .feat{grid-template-columns:1fr}
+  body{font-size:16.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="date-mark" aria-hidden="true"><s>১৬</s><b>১৭</b><span>জুমাদাল উলা</span></div>
+      <h1>আমল ট্র্যাকার</h1>
+      <p class="lead">পাঁচ ওয়াক্ত নামাজ-ভিত্তিক জিকির ও আমল ট্র্যাক করার একটা সাদামাটা জায়গা। জামাতের অ্যালার্ম, হিজরি তারিখ আর সূর্যোদয়-সূর্যাস্তের সময় সব এক অ্যাপে।</p>
+      <a id="dl" class="btn" href="https://github.com/mdmhkhan3228-art/amol-tracker-releases/releases/latest" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+        <span id="dl-text">ফ্রি ডাউনলোড (APK)</span>
+      </a>
+      <p class="meta" id="meta">অ্যান্ড্রয়েড ফোনের জন্য · সম্পূর্ণ বিনামূল্যে</p>
+    </div>
+    <figure><img src="screenshots/home.jpg" alt="আমল ট্র্যাকারের হোমপেজ: হিজরি তারিখ, সূর্যোদয়, সূর্যাস্ত ও পাঁচ ওয়াক্তের সময়" width="520" height="1056"></figure>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2>অ্যাপে যা যা আছে</h2>
+    <ul class="feat">
+      <li><b>ওয়াক্তভিত্তিক আমলের চেকলিস্ট</b><span>ফজর থেকে ইশা, প্রতি ওয়াক্তের আমল ও জিকির টিক দিয়ে রাখুন। নিজের আমল যোগ, মুছে ফেলা ও সাজানোও যায়।</span></li>
+      <li><b>জামাতের অ্যালার্ম</b><span>প্রতি ওয়াক্তের জামাতের সময় নিজে ঠিক করুন, পছন্দের টোন বেছে নিন।</span></li>
+      <li><b>ওয়াক্ত শুরু ও শেষের রিমাইন্ডার</b><span>ওয়াক্ত শুরু হলে এবং শেষ হওয়ার ১৫ মিনিট আগে নোটিফিকেশন ও ভয়েস রিমাইন্ডার।</span></li>
+      <li><b>হিজরি ও বাংলা তারিখ</b><span>স্থানীয় চাঁদ দেখা অনুযায়ী ±দিন সমন্বয়ের সুবিধা সহ।</span></li>
+      <li><b>সূর্যোদয়, সূর্যাস্ত ও ইশরাকের সময়</b><span>আপনার এলাকার (জিপিএস বা হাতে বাছাই) অবস্থান অনুযায়ী হিসাব।</span></li>
+      <li><b>দরুদ ও ইস্তেগফার রিমাইন্ডার</b><span>কত মিনিট পরপর এবং দিনের কোন সময়ে, সেটা আপনার হাতে।</span></li>
+      <li><b>আমল চেকব্যাক ও অগ্রগতি</b><span>রাতে দিনের হিসাব মিলিয়ে দেখুন। সাপ্তাহিক ও মাসিক অগ্রগতি দেখা যায়।</span></li>
+      <li><b>হোমস্ক্রিন উইজেট ও বিশেষ আমল</b><span>জুমার দিনের আমল, ঘুমানোর আগের আমল, সোম-বৃহস্পতি ও আইয়ামে বিজের রোজার স্মরণ।</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap"><h2>স্ক্রিনশট</h2></div>
+  <div class="gal"><div class="shots" tabindex="0" aria-label="অ্যাপের স্ক্রিনশট, পাশে সরিয়ে দেখুন">
+    <figure><img loading="lazy" src="screenshots/home.jpg" alt="হোমপেজ" width="520" height="1056"><figcaption>হোমপেজ</figcaption></figure>
+    <figure><img loading="lazy" src="screenshots/zuhr.jpg" alt="যোহরের আমলের চেকলিস্ট" width="520" height="1056"><figcaption>ওয়াক্তের আমল</figcaption></figure>
+    <figure><img loading="lazy" src="screenshots/checkback.jpg" alt="আমল চেকব্যাক ও সাপ্তাহিক অগ্রগতি" width="520" height="1056"><figcaption>চেকব্যাক ও অগ্রগতি</figcaption></figure>
+    <figure><img loading="lazy" src="screenshots/jamaat.jpg" alt="জামাতের সময়সূচি ও অ্যালার্ম" width="520" height="1056"><figcaption>জামাতের অ্যালার্ম</figcaption></figure>
+    <figure><img loading="lazy" src="screenshots/hijri.jpg" alt="লোকেশন ও হিজরি তারিখ সমন্বয়" width="520" height="1056"><figcaption>লোকেশন ও হিজরি তারিখ</figcaption></figure>
+  </div></div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>ইনস্টল করবেন যেভাবে</h2>
+    <ol class="steps">
+      <li><strong>APK ডাউনলোড করুন।</strong> উপরের সবুজ বাটনে চাপলে সর্বশেষ ভার্সন নেমে আসবে।</li>
+      <li><strong>ফাইলটা খুলুন।</strong> ফোন প্রথমবার "অজানা সোর্স থেকে ইনস্টল" অনুমতি চাইবে। যে ব্রাউজার বা ফাইল ম্যানেজার থেকে খুলছেন, তার জন্য অনুমতি দিন।</li>
+      <li><strong>ইনস্টল চাপুন।</strong> অ্যাপ খুলে লোকেশন বেছে নিন, তারপর জামাতের সময় ঠিক করে নিন।</li>
+      <li><strong>সঠিক সময়ে রিমাইন্ডার পেতে</strong> নোটিফিকেশনের অনুমতি দিন এবং অ্যাপের ব্যাটারি অপ্টিমাইজেশন বন্ধ রাখুন।</li>
+    </ol>
+    <p class="note"><strong>পরে আপডেট?</strong> অ্যাপের সেটিংসের নিচে "আপডেট চেক" বাটন আছে। নতুন ভার্সন এলে সেখান থেকেই নিয়ে নেওয়া যাবে।</p>
+    <p class="warn">অ্যাপটা Google Play Store-এ নেই, তাই ইনস্টলের সময় ফোন একটা সতর্কবার্তা দেখাতে পারে। এটা Play Store-এর বাইরের যেকোনো APK-র ক্ষেত্রেই হয়।</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="https://github.com/mdmhkhan3228-art/amol-tracker-releases/releases">সব ভার্সন</a><a href="https://github.com/mdmhkhan3228-art/amol-tracker-releases/issues">সমস্যা বা মতামত জানান</a></p>
+    <p style="margin-top:10px">বাংলা উচ্চারণ দেখে আরবি উচ্চারণ সঠিকভাবে শেখা যায় না। শুদ্ধ উচ্চারণের জন্য মূল আরবি টেক্সট ও সহীহ তিলাওয়াতের সহায়তা নিন।</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var API='https://api.github.com/repos/mdmhkhan3228-art/amol-tracker-releases/releases/latest';
+  var toBn=function(s){return String(s).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d]})};
+  fetch(API,{headers:{'Accept':'application/vnd.github+json'}})
+    .then(function(r){if(!r.ok)throw 0;return r.json()})
+    .then(function(rel){
+      var apk=(rel.assets||[]).filter(function(a){return /\.apk$/i.test(a.name)})[0];
+      if(!apk)return;
+      document.getElementById('dl').href=apk.browser_download_url;
+      var mb=toBn((apk.size/1048576).toFixed(1));
+      document.getElementById('dl-text').textContent='ডাউনলোড '+toBn(rel.tag_name);
+      document.getElementById('meta').textContent='সর্বশেষ ভার্সন '+toBn(rel.tag_name)+' · '+mb+' MB · অ্যান্ড্রয়েডের জন্য, সম্পূর্ণ বিনামূল্যে';
+    })
+    .catch(function(){/* বাটন রিলিজ পেজেই নিয়ে যাবে */});
+})();
+</script>
+</body>
+</html>
